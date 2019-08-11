@@ -1,0 +1,68 @@
+[Run]
+is_test = 0
+is_train = 1
+multi_thread_decode = 0
+viterbi_decode = 0
+use_unlabeled_crf_loss = 1
+cpu_thread_num = 4
+device-x = cpu
+device = cuda:0
+dict_dir = ./
+word_freq_cutoff = 1
+model_dir = ./
+is_load_embed_lstm = 1
+embed_lstm_dir = ./embed-lstm/
+ext_word_emb_full_path = /data1/bzhang/ChineseJournal/data/giga.bin
+ext_word_dict_full_path = /data1/bzhang/ChineseJournal/data/extwords.txt
+inst_num_max = -1
+sent_max_len = 100
+max_bucket_num = 80
+sent_num_one_batch = 200
+word_num_one_batch = 5000 
+
+[Test]
+model_eval_num = 0
+best_model_name = 
+use_constrained_predict = 0
+
+[Train]
+corpus_weights = 1
+data_dir0 = /data1/bzhang/ChineseJournal/data/crf-check-ctb2su-gold-pos
+train_files = $1:%(data_dir0)s/train.conll&0<-1
+dev_files = $1:%(data_dir0)s/dev.conll&0<-1
+test_files = $1:%(data_dir0)s/test.conll&0<-1
+#test_files = $1:%(data_dir0)s/train.conll&0<-1
+
+is_dictionary_exist = 1
+train_max_eval_num = 1000
+save_model_after_eval_num = 10
+train_stop_after_eval_num_no_improve = 100
+eval_every_update_step_num = 30
+
+[Network]
+lstm_layer_num = 2
+word_emb_dim = 100
+tag_emb_dim = 100
+emb_dropout_ratio = 0.33
+lstm_hidden_dim = 150
+lstm_input_dropout_ratio = 0.33
+lstm_hidden_dropout_ratio_for_next_timestamp = 0.33
+mlp_output_dim_arc = 0
+mlp_output_dim_rel = 0
+mlp_input_dropout_ratio = 0.33
+mlp_output_dropout_ratio = 0.33
+src_label_emb_dim = 50
+inside_treelstm_dropout_ratio = 0
+outside_treelstm_dropout_ratio = 0.5
+treelstm_hidden_dim = 100 
+conv_mlp_output_dim_arc = 300
+conv_mlp_output_dim_rel = 200
+
+[Optimizer]
+learning_rate = 2e-3
+decay = .75
+decay_steps = 5000
+beta_1 = .9
+beta_2 = .9
+epsilon = 1e-12
+clip = 5.0
