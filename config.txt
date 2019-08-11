@@ -1,0 +1,50 @@
+[Run]
+is_test = 0
+is_train = 1
+device-x = cpu
+device = cuda:0
+dict_dir = ./
+word_freq_cutoff = 1
+model_dir = ./
+ext_word_emb_full_path = /data4/bzhang/Data/giga.bin
+ext_word_dict_full_path = /data4/bzhang/Data/extwords.txt
+inst_num_max = -1
+max_bucket_num = 80
+sent_num_one_batch = 200
+word_num_one_batch = 5000 
+
+[Test]
+model_eval_num = 0
+
+[Train]
+data_dir = /data4/bzhang/Data/conll
+train_files = %(data_dir)s/train.conll
+dev_files = %(data_dir)s/conll-dev.conll
+test_files = %(data_dir)s/conll-test.conll
+is_dictionary_exist = 1
+train_max_eval_num = 1000
+save_model_after_eval_num = 50
+train_stop_after_eval_num_no_improve = 200
+eval_every_update_step_num = 136 
+
+[Network]
+lstm_layer_num = 3
+word_emb_dim = 100
+tag_emb_dim = 100
+emb_dropout_ratio = 0.33
+lstm_hidden_dim = 400
+lstm_input_dropout_ratio = 0.33
+lstm_hidden_dropout_ratio_for_next_timestamp = 0.33
+mlp_output_dim_arc = 500
+mlp_output_dim_rel = 100
+mlp_input_dropout_ratio = 0.33
+mlp_output_dropout_ratio = 0.33
+
+[Optimizer]
+learning_rate = 2e-3
+decay = .75
+decay_steps = 5000
+beta_1 = .9
+beta_2 = .9
+epsilon = 1e-12
+clip = 5.0

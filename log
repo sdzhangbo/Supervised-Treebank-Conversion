@@ -1,0 +1,4 @@
+Compiling crf_loss.pyx because it changed.
+[1/1] Cythonizing crf_loss.pyx
+running build_ext
+copying build/lib.linux-x86_64-3.6/labeled_crf_loss.cpython-36m-x86_64-linux-gnu.so -> 
