@@ -2,9 +2,11 @@
 for paper, Dependency Treebank Conversion and Exploitation Based on Full-Tree LSTM
 
 ## Requirements
+'''txt
 python 3.6.5
 pytorch 0.4.1
 cython  0.28.2
+'''
 
 ## Run
 * 1. cd exp
