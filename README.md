@@ -18,4 +18,3 @@ cython  0.28.2
    （run.sh: $exe --is_dictionary_exist 0 --is_train 1 --is_test 0 > log.create-dict 2>&1）
    d. 再有了字典和初始化模型的情况下，可以进行模型训练了
    (run.sh: $exe --is_dictionary_exist 1 --random_seed 1540422239 --is_train 1 --is_test 0 > log.train 2>&1)
-   
